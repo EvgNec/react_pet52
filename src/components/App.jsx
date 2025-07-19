@@ -1,22 +1,41 @@
-import { Routes, Route, NavLink } from "react-router-dom";
-// import Home from "path/to/pages/Home";
-// import About from "path/to/pages/About";
-// import Products from "path/to/pages/Products";
+import { Route, Routes } from "react-router-dom";
+import { About } from "../pages/About";
+import { Home } from "../pages/Home";
+import { ProductDetails } from "../pages/ProductDetails";
+import { Products } from "../pages/Products";
+import { Mission } from "./Mission";
+import { Team } from "./Team";
+import { Reviews } from "./Reviews";
+import { Container, Header, Logo, Link } from "./App.styled";
 
 export const App = () => {
   return (
-    <div>
-    <nav>
-      <NavLink to='/'>HomePage</NavLink>
-      <NavLink to='/about'>About</NavLink>
-      <NavLink to='/products'>Products</NavLink>
-    </nav>
+    <Container>
+      <Header>
+        <Logo>
+          <span role="img" aria-label="computer icon">
+            💻
+          </span>{" "}
+          GoMerch Store
+        </Logo>
+        <nav>
+          <Link to="/" end>
+            Home
+          </Link>
+          <Link to="/about">About</Link>
+          <Link to="/products">Products</Link>
+        </nav>
+      </Header>
       <Routes>
-      <Route path="/" element={<div>HP</div>}/>
-      <Route path="/about" element={<div>about</div>}/>
-      <Route path="/products" element={<div>products</div>}/>
-
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />}>
+          <Route path="mission" element={<Mission />} />
+          <Route path="team" element={<Team />} />
+          <Route path="reviews" element={<Reviews />} />
+        </Route>
+        <Route path="/products" element={<Products />} />
+        <Route path="/products/:id" element={<ProductDetails />} />
       </Routes>
-    </div>
+    </Container>
   );
 };
