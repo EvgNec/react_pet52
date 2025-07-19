@@ -19,7 +19,7 @@ export const App = () => {
           GoMerch Store
         </Logo>
         <nav>
-          <Link to="/" end>
+          <Link to="/">
             Home
           </Link>
           <Link to="/about">About</Link>
